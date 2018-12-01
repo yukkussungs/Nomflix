@@ -2,7 +2,9 @@ import React from 'react';
 import Router from "Components/Router";
 
 function App() {
-  return <><Router /></>;
+  return <>
+    <Router />
+  </>;
 }
 
 export default App;
