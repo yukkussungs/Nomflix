@@ -17,35 +17,28 @@ export default class extends React.Component {
         data: { results: topRated }
       } = await tvApi.topRated();
       const {
-        data: { results: airingToday }
-      } = await tvApi.airingToday();
-      const {
         data: { results: popular }
       } = await tvApi.popular();
-
-      this.setState({
-        topRated,
-        airingToday,
-        popular
-      });
+      const {
+        data: { results: airingToday }
+      } = await tvApi.airingToday();
+      this.setState({ topRated, popular, airingToday });
     } catch {
       this.setState({
-        error: "Can't find movies information."
+        error: "Can't find TV information."
       });
     } finally {
-      this.setState({
-        loading: false
-      });
+      this.setState({ loading: false });
     }
   }
 
   render() {
-    const { topRated, popular, airingTday, loading, error } = this.state;
+    const { topRated, popular, airingToday, loading, error } = this.state;
     return (
       <TVPresenter
         topRated={topRated}
         popular={popular}
-        airingTday={airingTday}
+        airingToday={airingToday}
         loading={loading}
         error={error}
       />
